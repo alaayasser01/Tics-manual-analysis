@@ -1,0 +1,154 @@
+Timestamp(seconds),Frame Number,Emotion
+1,0,neutral
+1,1,neutral
+1,2,happy
+1,3,angry
+1,4,no face detected
+2,5,fear
+2,6,happy
+2,7,neutral
+2,8,fear
+2,9,happy
+3,10,fear
+3,11,happy
+3,12,happy
+3,13,happy
+3,14,happy
+4,15,fear
+4,16,happy
+4,17,no face detected
+4,18,no face detected
+4,19,neutral
+5,20,happy
+5,21,fear
+5,22,happy
+5,23,sad
+5,24,happy
+6,25,happy
+6,26,happy
+6,27,fear
+6,28,happy
+6,29,no face detected
+7,30,no face detected
+7,31,no face detected
+7,32,no face detected
+7,33,no face detected
+7,34,no face detected
+8,35,no face detected
+8,36,neutral
+8,37,happy
+8,38,happy
+8,39,sad
+9,40,sad
+9,41,sad
+9,42,happy
+9,43,fear
+9,44,no face detected
+10,45,happy
+10,46,sad
+10,47,fear
+10,48,happy
+10,49,fear
+11,50,no face detected
+11,51,no face detected
+11,52,no face detected
+11,53,no face detected
+11,54,no face detected
+12,55,no face detected
+12,56,no face detected
+12,57,no face detected
+12,58,no face detected
+12,59,no face detected
+13,60,no face detected
+13,61,no face detected
+13,62,no face detected
+13,63,no face detected
+13,64,no face detected
+14,65,no face detected
+14,66,no face detected
+14,67,no face detected
+14,68,angry
+14,69,happy
+15,70,happy
+15,71,no face detected
+15,72,happy
+15,73,fear
+15,74,sad
+16,75,happy
+16,76,angry
+16,77,no face detected
+16,78,no face detected
+16,79,happy
+17,80,no face detected
+17,81,neutral
+17,82,happy
+17,83,no face detected
+17,84,happy
+18,85,neutral
+18,86,no face detected
+18,87,no face detected
+18,88,no face detected
+18,89,neutral
+19,90,neutral
+19,91,happy
+19,92,happy
+19,93,fear
+19,94,happy
+20,95,neutral
+20,96,sad
+20,97,neutral
+20,98,happy
+20,99,happy
+21,100,happy
+21,101,sad
+21,102,happy
+21,103,fear
+21,104,neutral
+22,105,no face detected
+22,106,happy
+22,107,happy
+22,108,happy
+22,109,neutral
+23,110,happy
+23,111,surprise
+23,112,neutral
+23,113,happy
+23,114,happy
+24,115,happy
+24,116,neutral
+24,117,happy
+24,118,happy
+24,119,sad
+25,120,neutral
+25,121,happy
+25,122,happy
+25,123,sad
+25,124,no face detected
+26,125,happy
+26,126,happy
+26,127,happy
+26,128,fear
+26,129,happy
+27,130,happy
+27,131,happy
+27,132,neutral
+27,133,no face detected
+27,134,no face detected
+28,135,no face detected
+28,136,no face detected
+28,137,no face detected
+28,138,no face detected
+28,139,no face detected
+29,140,happy
+29,141,happy
+29,142,happy
+29,143,happy
+29,144,fear
+30,145,happy
+30,146,happy
+30,147,happy
+30,148,fear
+30,149,happy
+31,150,happy
+31,151,happy
+31,152,happy
