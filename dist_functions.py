@@ -5,10 +5,24 @@ import math
 # face bounder indices 
 FACE_OVAL=[ 10, 338, 297, 332, 284, 251, 389, 356, 454, 323, 361, 288, 397, 365, 379, 378, 400, 377, 152, 148, 176, 149, 150, 136, 172, 58, 132, 93, 234, 127, 162, 21, 54, 103,67, 109]
 
+#chin
+CENTER_CHIN=[378, 400, 377, 152, 148, 176, 149]
+RIGHT_CHIN=[323, 361, 288, 435, 397, 365, 364, 379, 378]
+LEFT_CHIN= [93, 132, 58, 215, 172, 136, 135, 150, 149]
+
+# face extra
+LOWER_LIP_ACCROSS_CHIN =[146, 91, 181, 17, 405, 321, 375]
+NOSE_ACROSS_HALF_UPPER_LIP=[ 98, 97, 2, 328, 327]
+
 # lips indices for Landmarks
 LIPS=[ 61, 146, 91, 181, 84, 17, 314, 405, 321, 375,291, 308, 324, 318, 402, 317, 14, 87, 178, 88, 95,185, 40, 39, 37,0 ,267 ,269 ,270 ,409, 415, 310, 311, 312, 13, 82, 81, 42, 183, 78 ]
 LOWER_LIPS =[61, 146, 91, 181, 84, 17, 314, 405, 321, 375, 291, 308, 324, 318, 402, 317, 14, 87, 178, 88, 95]
 UPPER_LIPS=[ 185, 40, 39, 37,0 ,267 ,269 ,270 ,409, 415, 310, 311, 312, 13, 82, 81, 42, 183, 78] 
+VERY_RIGHT_LIPS= [ 409, 408, 407, 415, 308, 324, 325, 307, 375]
+VERY_LEFT_LIPS=  [ 185, 184, 183, 191, 78,  95,  96,  77,  146]
+RIGHT_UP_LIP=[0 ,267 ,269 ,270 ,409]
+LEFT_UP_LIP=[185, 40, 39, 37, 0]
+
 # Left eyes indices 
 LEFT_EYE =[ 362, 382, 381, 380, 374, 373, 390, 249, 263, 466, 388, 387, 386, 385,384, 398 ]
 LEFT_EYE_UPPER =[ 362, 382, 381, 380, 374, 373, 390,249, ]
@@ -42,22 +56,54 @@ def calculate_distances(landmarks, upper_indecies ,lower_indecies):
     
     return distances, average_distance
 
-def calculate_lip_distances(landmarks):
-    
-    # Define the indices for the mouth landmarks (for a total of 20 landmarks)
-    upper_lip_landmark_indices = [191, 183, 184, 185, 80, 42, 74, 40, 81, 41, 73, 39, 82, 38, 72, 37, 13, 12, 11, 0, 
-                                312, 268, 302, 267, 311, 271, 303, 269, 310, 272, 304, 270, 415, 407, 408, 409]
-    lower_lip_landmark_indices= [95, 96, 77, 146, 88, 89, 90, 91, 178, 179, 180, 181, 87, 86, 85, 84, 14, 15, 16, 17
-                                    ,317, 316, 315, 314, 402, 403, 404, 405, 318, 319, 320, 321, 324, 325, 307, 375]
-    # Calculate the distance between upper and lower lip landmarks
-    upper_lip_points = [landmarks.landmark[idx] for idx in upper_lip_landmark_indices]
-    lower_lip_points = [landmarks.landmark[idx] for idx in lower_lip_landmark_indices]
-    
-    # Calculate the Euclidean distance between corresponding points on the upper and lower lips
-    distances = [math.dist((upper.x, upper.y), (lower.x, lower.y)) for upper, lower in zip(upper_lip_points, lower_lip_points)]
-    average_distance = sum(distances) / len(distances)
+
+def opening_mouth_distances(landmarks):
+    distances, average_distance= calculate_distances(landmarks, UPPER_LIPS,LOWER_LIPS)
+    return distances, average_distance
+
+def kissing_smiling_mouth_distances(landmarks):
+    # if small kissing else smiling
+    distances, average_distance= calculate_distances(landmarks, VERY_RIGHT_LIPS, VERY_LEFT_LIPS)
+    return distances, average_distance
+
+def rising_right_up_lip_distances(landmarks):
+    distances, average_distance= calculate_distances(landmarks, RIGHT_UP_LIP, NOSE_ACROSS_HALF_UPPER_LIP)
+    return distances, average_distance
+
+def rising_left_up_lip_distances(landmarks):
+    distances, average_distance= calculate_distances(landmarks, LEFT_UP_LIP, NOSE_ACROSS_HALF_UPPER_LIP)
+
+    return distances, average_distance
+
+def drooping_lower_lip_distances(landmarks):
+    distances, average_distance= calculate_distances(landmarks, LOWER_LIP_ACCROSS_CHIN, CENTER_CHIN)
     
     return distances, average_distance
+
+def right_half_smiling_distances(landmarks):
+    distances, average_distance= calculate_distances(landmarks, VERY_RIGHT_LIPS, RIGHT_CHIN)
+    
+    return distances, average_distance
+
+def left_half_smiling_distances(landmarks):
+    distances, average_distance= calculate_distances(landmarks, VERY_LEFT_LIPS, LEFT_CHIN)
+    
+    return distances, average_distance
+
+def right_kissing_distances(landmarks):
+    # if the dist low then kissing 
+    distances, average_distance= calculate_distances(landmarks,  VERY_LEFT_LIPS, RIGHT_CHIN)
+    
+    return distances, average_distance
+
+
+def left_kissing_distances(landmarks):
+    # if the dist low then kissing 
+    distances, average_distance= calculate_distances(landmarks, VERY_RIGHT_LIPS, LEFT_CHIN)
+    
+    return distances, average_distance
+
+
 
 def write_distance_to_csv(csv_file, frame_number, distances, average_distance, is_mouth_open):
     with open(csv_file, mode='a', newline='') as file:
